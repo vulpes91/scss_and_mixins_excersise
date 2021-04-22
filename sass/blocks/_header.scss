@@ -1,0 +1,31 @@
+.header {
+    font-size: 18px;
+
+    .nav {
+        font-size: 14px;
+    } /*здесь компилируется как .header(пробел).nav*/
+
+    &__title {
+        color: #701c1c;
+        font-size: 24px;
+    } /*здесь создастся .header__title*/
+
+    @media (max-width: 1199px) {
+        font-size: 16px;
+        color:aquamarine;
+    } /*media запрос для .header*/
+}
+
+.title {
+    font-size: 14px;
+    &::after {
+        content: "-";
+    }
+    &::before {
+        content: "+";
+    } /*здесь появятся псевдоэлементы before и after */
+
+    &:last-child {
+        margin-right: 0; 
+    } /*псевдоселектор*/
+}

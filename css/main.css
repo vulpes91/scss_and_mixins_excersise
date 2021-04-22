@@ -1,0 +1,140 @@
+@charset "UTF-8";
+body {
+  margin: 0;
+  color: #2b2a2a;
+}
+
+h1 {
+  font-family: "Playfair display", serif;
+}
+
+p {
+  font-family: "Helvetica", sans-serif;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: 1200px;
+}
+
+.header {
+  font-size: 18px;
+  /*здесь компилируется как .header(пробел).nav*/
+  /*здесь создастся .header__title*/
+  /*media запрос для .header*/
+}
+.header .nav {
+  font-size: 14px;
+}
+.header__title {
+  color: #701c1c;
+  font-size: 24px;
+}
+@media (max-width: 1199px) {
+  .header {
+    font-size: 16px;
+    color: aquamarine;
+  }
+}
+
+.title {
+  font-size: 14px;
+  /*здесь появятся псевдоэлементы before и after */
+  /*псевдоселектор*/
+}
+.title::after {
+  content: "-";
+}
+.title::before {
+  content: "+";
+}
+.title:last-child {
+  margin-right: 0;
+}
+
+/* стили из main*/
+/*миксины */
+/* стили из footer */
+.icon {
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  transition: all 1s ease-in-out;
+}
+
+/*на выходе свойства миксина moveToCenter добавятся к селектору .icon*/
+.block-in-red {
+  color: #aa1818;
+  background-color: #861e1e;
+}
+
+.card {
+  border-radius: 5px;
+}
+
+.button-with-custom-radius {
+  border-radius: 4px;
+  /*Значение берётся из миксина customRadius с переменной */
+}
+
+/*на выходе будет подставлено значение переменной в 4 пикселя*/
+.form {
+  border-radius: 16px;
+}
+
+/*/миксины */
+/* наследование*/
+.article {
+  border-top: 3px solid green;
+}
+
+.widget {
+  border-top: 3px solid green;
+}
+
+/*здесь будет скомпилирован отдельно стиль для селектора article и отдельно для widget. Хотя 
+значения там одинаковые bordered()*/
+.main-section, .red-section {
+  border: 2px solid red;
+}
+
+/*и элемент main-section и red-section унаследуют свойство от %bordered-in-red*/
+/* на выходе получится " .main-section, .red-section {border: 2px solid red;} " */
+/* /наследование*/
+/*математические вычисления*/
+.container {
+  width: 100%;
+  /*960*/
+}
+
+.article {
+  float: left;
+  width: 62.5%;
+  /* будет выведено в css 62.5% */
+}
+
+.aside {
+  float: right;
+  width: 31.25%;
+  /* будет выведено в css 31.25% */
+}
+
+/*/математические вычисления*/
+/* /стили из main*/
+.none {
+  display: none;
+}
+
+/*утилитарные стили добавляются в конце, чтобы точно "перекрыть" все остальные */
+
+/*# sourceMappingURL=main.css.map */

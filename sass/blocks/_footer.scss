@@ -1,0 +1,93 @@
+/*миксины */
+
+/* стили из footer */
+
+@mixin moveToCenter() {
+    transform: translate(-50%, -50%);
+    transition: all 1s ease-in-out;
+}
+
+.icon {
+    @include moveToCenter();
+}
+
+/*на выходе свойства миксина moveToCenter добавятся к селектору .icon*/
+
+@mixin paintInRed() {
+    color: #aa1818;
+    background-color: rgb(134, 30, 30);
+}
+
+.block-in-red {
+    @include paintInRed();
+}
+
+@mixin standardRadius() {
+    border-radius: 5px;
+}
+
+.card {
+    @include standardRadius();
+}
+// ------------ 
+@mixin customRadius($customRadius) {
+    border-radius: $customRadius;
+}
+
+.button-with-custom-radius {
+    @include customRadius(4px); /*Значение берётся из миксина customRadius с переменной */
+} /*на выходе будет подставлено значение переменной в 4 пикселя*/
+
+.form {
+    @include customRadius(16px); 
+}
+
+/*/миксины */
+
+/* наследование*/
+
+@mixin bordered() {
+    border-top: 3px solid green;
+}
+
+.article {
+    @include bordered();
+}
+.widget {
+    @include bordered();
+}
+/*здесь будет скомпилирован отдельно стиль для селектора article и отдельно для widget. Хотя 
+значения там одинаковые bordered()*/
+
+%bordered-in-red {
+    border: 2px solid red;
+}
+
+.main-section {
+    @extend %bordered-in-red;
+}
+
+.red-section {
+    @extend %bordered-in-red;
+}
+/*и элемент main-section и red-section унаследуют свойство от %bordered-in-red*/
+/* на выходе получится " .main-section, .red-section {border: 2px solid red;} " */
+/* /наследование*/
+
+/*математические вычисления*/
+.container {
+    width: 100%; /*960*/
+}
+
+.article {
+    float: left;
+    width: 600px / 960px * 100%; /* будет выведено в css 62.5% */
+}
+
+.aside {
+    float: right;
+    width: 300px / 960px * 100%;  /* будет выведено в css 31.25% */
+}
+/*/математические вычисления*/
+
+/* /стили из main*/
